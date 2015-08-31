@@ -1,12 +1,11 @@
 ---
-# our common playbook for install ScaleIO
-- name: Install ScaleIO
-  hosts: scaleio
+# This playbook deploys scaleio on a centos cluster
 
-# different rols with their own playbook, seperated by function
-# lia is going to be part of all systems
+# First start with our common play to install some needed software
+- name: deploy packages on all scaleio hosts
+  hosts: scaleio
+  gather_facts: no
+  sudo: yes
+
   roles:
   - common
-  - sds
-  - mdm
-  - sdc

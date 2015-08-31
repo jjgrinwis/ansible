@@ -1,0 +1,5 @@
+---
+# variables used int this playbook
+# scaleIO version to install
+scaleio_version: 1.32-403.2.el6
+

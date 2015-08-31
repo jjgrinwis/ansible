@@ -1,11 +1,13 @@
 [scaleio]
-scaleio[01:04].t-i.demo
+scaleio01 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
+scaleio02 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2200
+scaleio03 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2201
 
 [mdm]
-scaleio[01:02].t-i.demo
+scaleio[01:02]
 
 [sds]
-scaleio[01:03].t-i.demo
+scaleio[01:03]
 
 [sdc]
-scaleio04.t-i.demo
+scaleio03
