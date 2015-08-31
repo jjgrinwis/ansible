@@ -1,0 +1,12 @@
+---
+# our common playbook for install ScaleIO
+- name: Install ScaleIO
+  hosts: scaleio
+
+# different rols with their own playbook, seperated by function
+# lia is going to be part of all systems
+  roles:
+  - common
+  - sds
+  - mdm
+  - sdc

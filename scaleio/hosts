@@ -1,0 +1,11 @@
+[scaleio]
+scaleio[01:04].t-i.demo
+
+[mdm]
+scaleio[01:02].t-i.demo
+
+[sds]
+scaleio[01:03].t-i.demo
+
+[sdc]
+scaleio04.t-i.demo
