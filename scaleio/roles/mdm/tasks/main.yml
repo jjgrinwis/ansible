@@ -1,2 +1,24 @@
 ---
-# tasks file for roles/mdm
+# task that will copy mdm software to host
+# we're using one central repository in files where we can place all our rpm's.
+# our version is coming from group_vars all
+
+#- name: show vars
+#  debug: var={{ scaleio_version }}
+
+- name: upload mdm software to mdm hosts
+  copy: src={{ scaleio_package_path }}/EMC-ScaleIO-mdm-{{ scaleio_version }}.el6.x86_64.rpm dest=/opt/EMC-ScaleIO-mdm.x86_64.rpm
+
+# now install software using yum
+- name: install mdm software on host
+  yum: name=/opt/EMC-ScaleIO-mdm.x86_64.rpm state=present
+
+# now we're going to configure mdm, we need ip address of mdm hosts
+# primary and secondary ip's have been configured in play of playbook
+- name: Install primary MDM
+  # debug: msg="primary and secondary MDM ip {{ pdm }} & {{ sdm }}"
+  # inventory hostname is hostname we're currently looping
+  # debug: var=inventory_hostname
+  command: scli --add_primary_mdm --primary_mdm_ip {{ pdm }} --mdm_management_ip {{ pdm }},{{ sdm }} --accept_license
+  register: result
+  when: inventory_hostname == "{{ scaleio_primary_mdm }}"

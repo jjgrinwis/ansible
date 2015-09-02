@@ -1,0 +1,34 @@
+---
+# setup tasks for the scaleio environment
+
+# now run all the commands to start the basic stup
+- name: login and set password
+  command: scli --login --mdm_ip {{ pdm }} --username admin --password admin
+
+- name: change password
+  command: scli --set_password --mdm_ip {{ pdm }} --old_password admin --new_password {{ scaleio_password }}
+
+- name: login again and start new scli session
+  command: scli --login --mdm_ip {{ pdm }} --username admin --password {{ scaleio_password }}
+
+- name: set secondary MDM
+  command: scli --add_secondary_mdm --mdm_ip {{ pdm }} --secondary_mdm_ip {{ sdm }}
+
+- name: set tie-breaker host
+  command: scli --add_tb --tb_ip {{ tb }} --mdm_ip {{ pdm }},{{ sdm }}
+
+- name: switch to cluster mode
+  command: scli --switch_to_cluster_mode --mdm_ip {{ pdm }},{{ sdm }}
+
+- name: create protection domain
+  command: scli --add_protection_domain --mdm_ip {{ pdm }},{{ sdm }} --protection_domain_name {{ pdn }}
+
+- name: create storage pool
+  command: scli --add_storage_pool --mdm_ip {{ pdm }},{{ sdm }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }}
+
+# now loop through all available hosts in groups['sds']
+# set_fact: headnode={{ groups[[‘webservers’][0]] }}
+- name: add storage from sds
+  #debug: msg="{{ hostvars[item].ansible_eth1.ipv4.address }}"
+  debug: msg="scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth1.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }}"
+  with_items: groups.sds

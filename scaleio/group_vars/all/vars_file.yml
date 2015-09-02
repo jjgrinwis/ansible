@@ -1,0 +1,10 @@
+scaleio_version: 1.32-403.2
+scaleio_package_path: ~/Github/ansible/scaleio/files
+scaleio_primary_mdm: scaleio01
+scaleio_tie_breaker: scaleio03
+scaleio_password: "P@SSword123"
+scaleio_protection_domain_name: "PD01"
+scaleio_storage_pool_name: "SP01"
+pdm: "{{ hostvars.scaleio01.ansible_eth1.ipv4.address }}"
+sdm: "{{ hostvars.scaleio02.ansible_eth1.ipv4.address }}"
+tb: "{{ hostvars.scaleio03.ansible_eth1.ipv4.address }}"

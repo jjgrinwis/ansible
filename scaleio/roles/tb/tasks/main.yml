@@ -1,0 +1,10 @@
+---
+# tasks file for roles/tb
+# add tb software
+
+- name: copy tie-breaker software to tie-breaker host
+  copy: src={{ scaleio_package_path }}/EMC-ScaleIO-tb-{{ scaleio_version }}.el6.x86_64.rpm dest=/opt/EMC-ScaleIO-tb.x86_64.rpm
+
+- name: instal tb software
+  yum: name=/opt/EMC-ScaleIO-tb.x86_64.rpm state=present
+

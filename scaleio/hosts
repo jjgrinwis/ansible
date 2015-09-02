@@ -11,3 +11,9 @@ scaleio[01:03]
 
 [sdc]
 scaleio03
+
+[tb]
+scaleio03
+
+[pmdm]
+scaleio01

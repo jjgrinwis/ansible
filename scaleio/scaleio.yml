@@ -1,11 +1,68 @@
 ---
 # This playbook deploys scaleio on a centos cluster
+# different plays for different hosts using roles
+
+# Our var's are defined in group_var/all/vars_file.yml yaml file
+- name: show vars
+  hosts: scaleio
+  gather_facts: no
+  tasks:
+    - name: show vars
+      # debug: msg="Going to install ScaleIO {{ scaleio_version }}"
+      debug: var=scaleio_version
 
 # First start with our common play to install some needed software
-- name: deploy packages on all scaleio hosts
+- name: deploy needed packages on all scaleio hosts
   hosts: scaleio
+
+  # there is something wrong with facet so we're not gathering facts for now
+  # common taks will fix ruby link so we can start gathering facts later use facet.
   gather_facts: no
   sudo: yes
 
   roles:
   - common
+
+# install sds package on sds hosts
+- name: deploy SDS package on sds hosts
+  hosts: sds
+  sudo: yes
+  gather_facts: no
+
+  roles:
+  - sds
+
+# install tie breaker software
+- name:  install tie breaker software on tb host
+  hosts: tb
+  sudo: yes
+
+  roles:
+  - tb
+
+# Now start play to install and configure mdm host
+- name: deploy MDM package on mdm hosts
+  hosts: mdm
+  sudo: yes
+
+  # define primary and secondary mdm using host facts
+  # facts of all hosts can be found in hostvars dictionary
+  # to check all vars: $ ansible mdm -m setup -a 'filter=ansible_eth1*'
+  # needed hostvars have been defined group_vars/all/vars_file.yml
+  # Now start the task
+  roles:
+  - mdm
+
+# it's time to configure scaleio
+- name: configure ScaleIO
+  hosts: pmdm
+  sudo: yes
+
+  # define some vars in play to be used in task.
+  # These can be configured in role or all group vars but we've done it here.
+  vars:
+    pdn: "{{ scaleio_protection_domain_name }}"
+    spn: "{{ scaleio_storage_pool_name }}"
+
+  roles:
+  - setup
