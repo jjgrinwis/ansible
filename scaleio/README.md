@@ -30,8 +30,8 @@ scaleio02                  : ok=8    changed=1    unreachable=0    failed=0
 scaleio03                  : ok=8    changed=1    unreachable=0    failed=0 
 
 Your MDM/SDS cluster should be ready now:
-$ ansible -a "scli --mdm --query_cluster" pmdm
-scaleio01 | success | rc=0 >>
+$ ansible -a "scli --mdm --query_cluster" pmdm 
+scaleio01 | success | rc=0 >> 
  Mode: Cluster, Cluster State: Normal, Tie-Breaker State: Connected
  Primary MDM IP: 172.28.128.3
  Secondary MDM IP: 172.28.128.4
