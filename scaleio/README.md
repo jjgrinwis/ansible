@@ -14,6 +14,7 @@ And also download your free copy of ScaleIO on: http://www.emc.com/products-solu
 
 Now setup the ScaleIO environment using "$ ansible-playbook scaleio.yml".
 Sit back and relax and let cowsay tell you which tasks are being run, moooe:
+...
 ____________ 
 < PLAY RECAP >
  ------------ 
@@ -27,6 +28,19 @@ ____________
 scaleio01                  : ok=19   changed=10   unreachable=0    failed=0   
 scaleio02                  : ok=8    changed=1    unreachable=0    failed=0   
 scaleio03                  : ok=8    changed=1    unreachable=0    failed=0 
+
+Your MDM/SDS cluster should be ready now:
+$ ansible -a "scli --mdm --query_cluster" pmdm
+scaleio01 | success | rc=0 >>
+ Mode: Cluster, Cluster State: Normal, Tie-Breaker State: Connected
+ Primary MDM IP: 172.28.128.3
+ Secondary MDM IP: 172.28.128.4
+ Tie-Breaker IP: 172.28.128.5
+ Management IP: 172.28.128.3, 172.28.128.4
+ Name: N/A
+ 
+ Next fase is adding some SDS nodes and devices to the cluster.
+
 
 
 
