@@ -1,0 +1,264 @@
+EMC ScaleIO(R) Limited Software License Agreement
+
+IMPORTANT - PLEASE READ CAREFULLY
+
+1. DELIVERY AND ACCEPTANCE.
+This Software contains computer programs and other proprietary material and information, the 
+use of which is subject to and expressly conditioned upon acceptance of this EMC ScaleIO 
+Limited Software License Agreement (the "Agreement").  This Agreement is a legally binding 
+document between you (meaning the individual person or the entity that the individual 
+represents that has obtained the Software for an Internal Business Purpose and not, for 
+example, for outright resale) (the "Customer") and EMC (which means (i) EMC Corporation, if 
+Customer is located in the United States; (ii) the local EMC sales subsidiary, if Customer is 
+located in a country in which EMC Corporation has a local sales subsidiary; and (iii) EMC 
+Information Systems International ("EISI"), if Customer is located outside the United States and 
+in a country in which EMC Corporation does not have a local sales subsidiary). 
+Unless EMC agrees otherwise in writing, this Agreement governs Customer's use of the 
+Software except to the extent all or any portion of the Software is: (a) the subject of a separate 
+written agreement; or (b) governed by a third party licensor's terms and conditions. Capitalized 
+terms have meaning stated in the Agreement.  
+If Customer does not have a currently enforceable, written and separately signed software 
+license agreement directly with EMC or the Distributor from whom Customer obtained this 
+Software, then by clicking on the "Agree" or "Accept" or similar button at the end of this 
+Agreement, or proceeding with the installation, downloading, use or reproduction of this 
+Software, or authorizing any other person to do so, you are representing to EMC that you are: (i) 
+authorized to bind the Customer; and (ii) agreeing on behalf of the Customer that the terms of 
+this Agreement shall govern the relationship of the parties with regard to the subject matter in 
+this Agreement and are waiving any rights, to the maximum extent permitted by applicable law, 
+to any claim anywhere in the world concerning the enforceability or validity of this Agreement.  
+If Customer has a currently enforceable, written and separately signed software license 
+agreement directly with EMC or the Distributor from whom Customer obtained this Software, 
+then by clicking on the "Agree" or "Accept" or similar button at the end of this Agreement, or 
+proceeding with the installation, downloading, use or reproduction of this Software, or 
+authorizing any other person to do so, you are representing that you are: (i) authorized to bind 
+the Customer; and (ii) agreeing on behalf of the Customer that the terms of such written, signed 
+agreement shall replace and supersede the terms of this Agreement and shall govern the 
+relationship of the parties with regard to this Software, and are waiving any rights, to the 
+maximum extent permitted by applicable law, to any claim anywhere in the world concerning the 
+enforceability or validity of such written signed agreement.  If you do not have authority to agree 
+to the terms of this Agreement on behalf of the Customer, or do not accept the terms of this 
+Agreement on behalf of the Customer, click on the "Cancel" or "Decline" or other similar button 
+at the end of this Agreement and/or immediately cease any further attempt to install, download 
+or use this Software for any purpose, and remove any partial or full copies made from this 
+Software.
+EMC and Customer enter into this Agreement and this Agreement shall become effective on the 
+date on which Customer downloads or Uses the Software, whichever occurs first (the "Effective 
+Date").  NOW, THEREFORE, in consideration of the premises and obligations contained herein, 
+it is agreed as follows:  
+
+2. DEFINITIONS.
+A. "Affiliate" means a legal entity that is controlled by, controls, or is under common "control" of 
+EMC or Customer. "Control" means more than 50% of the voting power or ownership interests. 
+B. "Confidential Information" means and includes all proprietary information of EMC, including 
+without limitation, all source code, software designs, and development environments of any 
+nature whatsoever.  Confidential Information does not include information that is: (i) rightfully in 
+the receiving party's possession without obligation of confidentiality prior to receipt from the 
+disclosing party; (ii) a matter of public knowledge through no fault of the receiving party; (iii) 
+rightfully furnished to the receiving party by a third party without restriction on disclosure or use; 
+or (iv) independently developed by the receiving party without use of or reference to the 
+disclosing party's Confidential Information. 
+C. "Distributor" means a reseller, distributor, system integrator, service provider, independent 
+software vendor, value-added reseller, OEM or other partner that is authorized by EMC to 
+license Software to end users.  The term shall also refer to any third party duly authorized by a 
+Distributor to license Software to end users.
+D. "Documentation" means the then-current, generally available, written user manuals and 
+online help and guides for Software provided by EMC. 
+E. "Internal Business Purposes" means an internal (non-commercial) Use for the purpose(s) of 
+testing and demonstrating the features of the Software, and not for Customer product 
+development, product testing, or other Customer research and development or commercial 
+purposes.
+F. "Software" means the EMC software product which requires acceptance of this Agreement, 
+and any copies made by or on behalf of Customer, Software Releases, and all Documentation 
+for the foregoing.
+G. "Software Release" means any subsequent version of Software provided by EMC after initial 
+delivery of Software but does not mean a new item of Software. 
+H. "Support Services" means the annual service available from EMC (at its discretion) or its 
+designee which provides Software Releases and support services for Software.
+I. "Use" or "Using" means to perform as defined under 17 U.S.C. Section 101 et seq. or other 
+applicable copyright statute.  For avoidance of doubt, Use does not include the right to- i) create 
+derivative works, ii) distribute, iii) publically display, iv) transmit, v) reproduce, or vi) sublicense 
+the Software.  
+
+3. LICENSE TERMS.
+A. License Grant.  Subject to Customer's compliance with this Agreement, EMC grants to 
+Customer a non-exclusive, world-wide, royalty free, full-paid, terminable, and nontransferable 
+license, under EMC's copyrights, to Use: (i) the Software for the Customer's Internal Business 
+Purposes; and (ii) the Documentation related to Software for the purpose of supporting 
+Customer's Use of Software for Customer's Internal Business Purposes.  To the extent 
+applicable to Software, Customer may be required to follow EMC's then current product 
+registration process, if any, to obtain and input an authorization key or license file.  
+Documentation is licensed solely for purposes of supporting Customer's Use of Software as 
+permitted in this Section.  
+B. License Restrictions.  All Software licenses granted herein are for the Use of object code 
+only.  Notwithstanding the definition of Use (see Section 2.I), the Customer is: (a) permitted to 
+reproduce one copy of the Software in connection with the Customer's authorized Use for 
+Internal Business Purposes or for backup purposes; (b) authorized to sublicense its Use rights 
+under Section 3.A to a contractor employed by the Customer so along as the rights granted to 
+the contractor do not exceed the rights granted under this Agreement; and (c) Customer may 
+reproduce the Documentation insofar as reasonably necessary in connection with Customer's 
+authorized Use for Internal Business Purposes of Software.  Customer shall not, without EMC's 
+prior written consent: (i) use Software in a service bureau; (ii) use or make the Software 
+available as service to a third party; (iii) perform or disclose to any third party the results of any 
+comparative or competitive analyses, benchmark testing or analyses of Software performed by 
+or on behalf of Customer; (iv) make available Software in any form to anyone other than 
+Customer's employees or contractors; (v) transfer Software to an Affiliate or a third party; or (vi) 
+publically disclose Confidential Information associated with the Software.
+C. Software Releases.  Software Releases shall be subject to the license terms applicable to 
+Software.
+D. Audit Rights.  EMC (including its independent auditors) shall have the right to audit 
+Customer's usage of Software to confirm compliance with the agreed terms stated herein.  Such 
+audit is subject to reasonable advance notice by EMC and shall not unreasonably interfere with 
+Customer's business activities.  Customer will provide EMC with the support required to perform 
+such audit and will, without prejudice to other rights of EMC, address any non-compliant 
+situations identified by the audit by forthwith procuring additional licenses for a fee.
+E. Reserved Rights.  All rights not expressly granted to Customer are reserved. In particular, no 
+title to, or ownership of, the Software is transferred to Customer.  Customer shall reproduce and 
+include copyright and other proprietary notices on and in any copies of the Software or 
+Documentation.  For avoidance of doubt, Customer shall not remove any copyright and other 
+proprietary notices from any copy of the Software or Documentation.  Unless expressly 
+permitted by applicable mandatory law, Customer shall not modify, enhance, supplement, 
+create derivative works from, reverse assemble, reverse engineer, decompile or otherwise 
+reduce to human readable form the Software without EMC's prior written consent, nor shall 
+Customer permit any third party to do the same.
+
+4. DISCLAIMER OF WARRANTY.
+A. DISCLAIMER OF WARRANTIES GENERALLY. EMC PROVIDES ALL SOFTWARE 
+HEREUNDER ON AN "AS-IS," "WHERE IS" BASIS, AND MAKES NO OTHER EXPRESS 
+WARRANTIES, WRITTEN OR ORAL, AND ALL OTHER WARRANTIES ARE SPECIFICALLY 
+EXCLUDED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTY OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, 
+AND ANY WARRANTY ARISING BY STATUTE, OPERATION OF LAW, COURSE OF 
+DEALING OR PERFORMANCE, OR USAGE OF TRADE.  UNLESS OTHERWISE AGREED 
+TO IN WRITING, EMC SHALL HAVE NO OBLIGATION TO PROVIDE SUPPORT, SUPPORT 
+SERVICES, OR MAINTENANCE OF ANY KIND UNDER THIS AGREEMENT.  
+B. Express Disclaimer of IP Warranty and Representation. EMC makes no warranty or 
+representation regarding third-party intellectual property rights infringed through the Use (or 
+use) of the Software, and shall have no liability to Customer for any action (or any prior related 
+claims) brought by or against Customer alleging that Customer's sale, use or other disposition of 
+Software licensed under this Agreement infringes any patent, copyright, trade secret or other 
+intellectual property right. In event of such an action, EMC retains the right to terminate this 
+Agreement and take possession of the Software. UNLESS OTHERWISE AGREED TO IN 
+WRITING, THIS SECTION STATES EMC'S ENTIRE LIABILITY WITH RESPECT TO 
+ALLEGED INFRINGEMENTS OF INTELLECTUAL PROPERTY RIGHTS BY THE SOFTWARE 
+OR ANY PART OF IT OR ITS OPERATION.  THIS SECTION STATES EMC'S ENTIRE 
+LIABILITY WITH RESPECT TO ALLEGED INFRINGEMENTS OF INTELLECTUAL 
+PROPERTY RIGHTS BY SOFTWARE OR ANY PART OF IT OR ITS OPERATION.
+C. Disclaimer of Warranties Related to Performance. No representation or other affirmation of 
+fact, including but not limited to a statement regarding capacity, suitability for use (or Use) or 
+performance of Software, whether made by EMC employees or otherwise, shall be deemed to 
+be a warranty for any purpose or give rise to any liability of EMC whatsoever unless contained 
+in this Agreement or otherwise agreed to in writing by EMC.
+
+5. NO INDEMNITY. 
+A. No Indemnification Generally.  In no event and under no legal theory, whether in tort 
+(including negligence), contract, or otherwise, unless required by applicable law (such as 
+deliberate and grossly negligent acts) or agreed to in writing, shall EMC be liable to Customer 
+for damages, including any direct, indirect, special, incidental, or consequential damages of any 
+character arising as a result of this Agreement or out of the use (or Use) or inability to use (or 
+Use) the Software (including but not limited to damages for loss of goodwill, work stoppage, 
+computer failure or malfunction, or any and all other commercial damages or losses), even if 
+such Customer has been advised of the possibility of such damages. 
+B. No Indemnification for Intellectual Property. EMC shall have no liability to Customer for any 
+action (and all prior related claims) brought by or against Customer alleging that Customer's use 
+(or Use) or other disposition of any Software infringes any patent, copyright, trade secret or 
+other intellectual property right.  In event of such an action, EMC retains the right to terminate 
+this Agreement and take possession of the Software.  This section states EMC's entire liability 
+with respect to alleged infringements of intellectual property by the Software, or any part of the 
+Software by its operation.
+C. LIMITATION ON LIABILITY. IN NO EVENT WILL EMC BE LIABLE TO CUSTOMER FOR 
+ANY DIRECT, SPECIAL, INCIDENTAL, EXEMPLARY, PUNITIVE OR CONSEQUENTIAL 
+DAMAGES (INCLUDING LOSS OF USE, DATA, BUSINESS OR PROFITS) OR FOR THE 
+COST OF PROCURING SUBSTITUTE PRODUCTS ARISING OUT OF OR IN CONNECTION 
+WITH THIS AGREEMENT OR THE USE OF THE SOFTWARE, WHETHER SUCH LIABILITY 
+ARISES FROM ANY CLAIM BASED UPON CONTRACT, WARRANTY, TORT (INCLUDING 
+NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, AND WHETHER OR NOT EMC HAS 
+BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE.  THE FOREGOING 
+LIMITATIONS WILL SURVIVE AND APPLY EVEN IF ANY LIMITED REMEDY SPECIFIED IN 
+THIS AGREEMENT IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.  IN ANY 
+CASE, EMC'S AGGREGATE LIABILITY TO CUSTOMER ARISING WITH RESPECT TO THIS 
+AGREEMENT WILL NOT EXCEED FIFTY UNITED STATES DOLLARS ($50).  SOME 
+JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR 
+INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR 
+EXCLUSION MAY NOT APPLY TO CUSTOMER.
+D. Special Exclusion. IN JURISDICTIONS THAT DO NOT ALLOW LIMITATION OR 
+EXCLUSION OF CONSEQUENTIAL OR INCIDENTAL DAMAGES, ALL OR A PORTION OF 
+SECTION 5.A ABOVE MAY NOT APPLY.
+
+6. TERMINATION. 
+A. Customer or EMC may terminate this Agreement for its convenience upon thirty (30) days' 
+notice to the non-terminating party.  Either Customer or EMC may terminate this Agreement 
+upon written notice due to the other party's material breach of the terms governing use of the 
+Software; provided that such breach is not cured within thirty (30) days after the provision of 
+written notice to the breaching party specifying the nature of such breach.  Upon termination of 
+this Agreement, Customer shall cease all use and return or certify destruction of the applicable 
+Software (including copies) to EMC.  Any provision that by its nature or context is intended to 
+survive any termination or expiration, including but not limited to provisions relating to 
+Confidential Information, disclaimer of warranty, and indemnity, shall so survive.  For avoidance 
+of doubt, any provision related to licensing shall cease to have legal effect when this Agreement 
+is terminated.
+
+7. MISCELLANEOUS.
+A. References. EMC may identify Customer for reference purposes unless and until Customer 
+expressly objects in writing 
+B. Notices and Language. Any notices permitted or required under this Agreement shall be in 
+writing, and shall be deemed given when delivered: (i) in person; (ii) by overnight courier, upon 
+written confirmation of receipt; (iii) by certified or registered mail, with proof of delivery; (iv) by 
+facsimile transmission with confirmation of receipt; or (v) by email, with confirmation of receipt 
+(except for routine business communications issued by EMC, which shall not require 
+confirmation from Customer). Notices shall be sent to the address, facsimile number or email 
+address set forth below, or at such other address, facsimile number or email address as 
+provided to the other party in writing. Notices shall be sent to: EMC Corporation, 176 South 
+Street, Hopkinton, MA 01748. Fax for legal notices: 508.293.7780. Email for legal notices: 
+legalnotices@emc.com. The parties agree that this Agreement has been written in the English 
+language, that the English language version shall govern and that all notices shall be in the 
+English language.
+C. Entire Agreement. This Agreement: (i) is the complete statement of the Agreement of the 
+parties with regard to the subject matter hereof; and (ii) may be modified only by a writing 
+signed by both parties. All terms of any purchase order or similar document provided by 
+Customer, including but not limited to any pre-printed terms thereon and any terms that are 
+inconsistent or conflict with this Agreement, shall be null and void and of no legal force or effect. 
+D. Force Majeure. Except for the payment of fees, if any, due EMC from Customer, neither party 
+shall be liable under this Agreement because of a failure or delay in performing its obligations 
+hereunder on account of any force majeure event, such as strikes, riots, insurrection, terrorism, 
+fires, natural disasters, acts of God, war, governmental action, or any other cause which is 
+beyond the reasonable control of such party.
+E. Assignment. Customer shall not assign this Agreement or any right or delegate any 
+performance without EMC's prior written consent, which consent shall not be unreasonably 
+withheld. Customer shall promptly notify EMC, and EMC may terminate this Agreement on thirty 
+days' (30) notice, if Customer merges with or is acquired by a third party or otherwise undergoes 
+a change of control.
+F. Governing Law. This Agreement is governed by: (i) the laws of the Commonwealth of 
+Massachusetts when EMC means EMC Corporation; (ii) the laws of the applicable country in 
+which the applicable EMC subsidiary is registered to do business when EMC means the local 
+EMC subsidiary, and (iii) the laws of Ireland when EMC means EISI. In each case, the 
+applicability of laws shall exclude any conflict of law rules. The U.N. Convention on Contracts for 
+the International Sale of Goods shall not apply. In the event of a dispute concerning this 
+Agreement, Customer consents to the sole and exclusive personal jurisdiction of the courts of 
+competency in the location where EMC is domiciled.
+G. Waiver. No waiver shall be deemed a waiver of any prior or subsequent default hereunder. If 
+any part of this Agreement is held unenforceable, the validity of the remaining provisions shall 
+not be affected.
+H. Partial Invalidity. If any part of this Agreement, a purchase order or an EMC quote is held 
+unenforceable, the validity of the remaining provisions shall not be affected.
+I. Government Regulations and Export Control. Software and the technology included therein 
+provided under this Agreement are subject to governmental restrictions on: (i) exports from the 
+U.S.; (ii) exports from other countries in which such Software and technology included therein 
+may be produced or located; (iii) disclosures of technology to foreign persons; (iv) exports from 
+abroad of derivative products thereof; and (v) the importation and/or use of such Software and 
+technology included therein outside of the United States or other countries (collectively, "Export 
+Laws"). Customer shall comply with all Export Laws and EMC export policies to the extent such 
+policies are made available to Customer by EMC. Diversion contrary to U.S. law or other Export 
+Laws is expressly prohibited.
+J. Injunctive Relief. Customer acknowledges that a violation of the sections contained in this 
+Agreement may cause irreparable harm to EMC not adequately compensable by monetary 
+damages irrespective of whether this Agreement (or a portion of it) is interpreted by a court of 
+competent jurisdiction as a contract or a license.  In addition to other relief, it is agreed that 
+temporary and permanent injunctive relief may be an appropriate remedy to prevent any actual 
+or threatened violation of such sections or to enforce such section according to their terms.  
+K. Questions. Questions related to this Agreement may be sent to: EMC Corporation (Attn: EMC 
+Legal), 176 South Street, Hopkinton, MA 01748 USA.
+
+		 
+
+1
+

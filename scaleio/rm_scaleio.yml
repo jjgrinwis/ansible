@@ -1,0 +1,16 @@
+---
+- name: remove scaleio 
+  hosts: scaleio
+  gather_facts: no
+  sudo: yes
+  tasks:
+    - name: remove scaleio installed packages
+      yum: name=item state=absent
+      with_items:
+        - EMC-ScaleIO-mdm.x86_64
+        - EMC-ScaleIO-sds.x86_64
+        - EMC-ScaleIO-sdc.x86_64
+        - EMC-ScaleIO-tb.x86_64
+
+    - name: just use simpel shell command to delete all files
+      command: "/bin/sh -c 'rm /opt/EMC*'"

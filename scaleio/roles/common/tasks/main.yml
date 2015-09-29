@@ -1,7 +1,7 @@
 ---
 # Our taks to install some needed software
-- name: link ruby
-  file: src=/usr/local/rvm/rubies/ruby-1.9.3-p551/bin/ruby dest=/usr/bin/ruby state=link
+#- name: link ruby
+#  file: src=/usr/local/rvm/rubies/ruby-1.9.3-p551/bin/ruby dest=/usr/bin/ruby state=link
 
 # now install all packages we need
 - name: install all needed packages

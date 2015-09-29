@@ -23,12 +23,44 @@
 - name: create protection domain
   command: scli --add_protection_domain --mdm_ip {{ pdm }},{{ sdm }} --protection_domain_name {{ pdn }}
 
+- name: create fault set
+  command: scli --add_fault_set --protection_domain_name {{ pdn }} --fault_set_name {{ item }}
+  with_items: "{{ fsn }}" 
+
 - name: create storage pool
   command: scli --add_storage_pool --mdm_ip {{ pdm }},{{ sdm }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }}
 
-# now loop through all available hosts in groups['sds']
+# now add sds hosts from fs0 to fsn0
+- name: add storage from sds to fs0
+  command: scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth0.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} --fault_set_name {{ fsn.0 }}
+  with_items: groups.fs0
+
+# now add sds hosts from fs1 to fsn1
+- name: add storage from sds to fs1
+  command: scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth0.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} --fault_set_name {{ fsn.1 }}
+  with_items: groups.fs1
+
+# now add sds hosts from fs2 to fsn2
+- name: add storage from sds to fs2
+  command: scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth0.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} --fault_set_name {{ fsn.2 }}
+  with_items: groups.fs2
+
+# now loop through all available hosts in groups['sds'] and add to protection_domain and storage_pool
 # set_fact: headnode={{ groups[[‘webservers’][0]] }}
-- name: add storage from sds
-  #debug: msg="{{ hostvars[item].ansible_eth1.ipv4.address }}"
-  debug: msg="scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth1.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }}"
-  with_items: groups.sds
+#- name: add storage from sds
+#  #debug: msg="{{ hostvars[item] }}"
+#  #debug: msg="scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth0.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }}"
+#  command: scli --add_sds --mdm_ip {{ pdm }},{{ sdm }} --sds_ip {{ hostvars[item].ansible_eth0.ipv4.address }} --device_path /dev/sdb --sds_name {{ item }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} --fault_set_name {{ fsn.0 }}
+  #with_items: groups.sds
+
+# now we have to wait until SDS has finished, just wait 10 seconds
+# we need to improve this by looking at the status of the pool!!
+- name: wait a couple of seconds to let SDS do it's work
+  pause: seconds=10
+
+# OK, so if we have come this far, it's time to create a filesystem
+- name: create filesystem from protection dmoains
+  command: scli --add_volume --mdm_ip {{ pdm }},{{ sdm }} --size_gb {{ fs_size }} --volume_name {{ vol_name }} --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} 
+# set some spare capacity, 1/number of SDS nodes
+- name: set spare capacity
+  command: scli --modify_spare_policy --protection_domain_name {{ pdn }} --storage_pool_name {{ spn }} --spare_percentage {{ percentage }} --i_am_sure 

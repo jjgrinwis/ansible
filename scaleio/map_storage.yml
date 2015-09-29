@@ -1,0 +1,46 @@
+---
+# now map a volume to a host and create filesystem
+
+# first some fact checking to fill global vars
+- name: gather facts
+  hosts: mdm
+
+# first register host and to a collecting of the facts
+- name: register host with scaleio
+  hosts: sdc
+  sudo: yes
+  tasks:
+    - name: run drv_cfg to register to the mdm
+      debug: var=sdc_ip 
+
+    # register host with mdm hosts
+    - name: run drv_cfg to register to the mdm
+      command: /opt/emc/scaleio/sdc/bin/drv_cfg --add_mdm --ip {{ pdm }},{{ sdm }}
+
+# now map volume to registerd host
+- name: map volume to host
+  hosts: pmdm
+  tasks:
+    - name: first login
+      command: scli --login --mdm_ip {{ pdm }} --username admin --password {{ scaleio_password }}
+
+    - name: map volume to host
+      command: scli --map_volume_to_sdc --volume_name {{ vol_name }} --sdc_ip {{ sdc_ip }}
+
+    - name: just wait until device is present 
+      #wait_for: path=/dev/scinia timeout=5
+      pause: seconds=3
+
+# now create partion and filesystem
+- name: create partition and filesystem
+  hosts: sdc
+  sudo: yes
+  tasks:
+    - name: create label and 1 primary partition
+      command: parted -s -a opt /dev/scinia mklabel msdos mkpart primary 0% 100%
+
+    - name: mkfs on /dev/scsia1
+      filesystem: fstype=ext3 dev=/dev/scinia1
+
+    - name: mount /dev/scsia on /mnt
+      mount: name=/mnt src=/dev/scinia1 fstype=ext3 state=mounted

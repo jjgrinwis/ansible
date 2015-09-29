@@ -1,2 +1,18 @@
 ---
-# tasks file for roles/sdc
+# task that will copy sdc software to host
+# we're using one central repository in files where we can place all our rpm's.
+# our version is coming from group_vars all
+
+#- name: show vars
+#  debug: var={{ scaleio_version }}
+
+- name: upload sdc software to mdm hosts
+  copy: src={{ scaleio_package_path }}/EMC-ScaleIO-sdc-{{ scaleio_version }}.el6.x86_64.rpm dest=/opt/EMC-ScaleIO-sdc.x86_64.rpm
+
+# now install software using yum
+- name: install sdc software on host
+  yum: name=/opt/EMC-ScaleIO-sdc.x86_64.rpm state=present
+
+# now register hosts with mdm servers
+#- name: register host with mdm's
+#  command: /opt/emc/scaleio/sdc/bin/drv_cfg --add_mdm --ip {{ pdm }},{{ sdm }}

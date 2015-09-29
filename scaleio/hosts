@@ -1,19 +1,34 @@
 [scaleio]
-scaleio01 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
-scaleio02 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2200
-scaleio03 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2201
+scaleio[01:10]
 
 [mdm]
 scaleio[01:02]
 
-[sds]
-scaleio[01:03]
-
 [sdc]
-scaleio03
+scaleio10
 
 [tb]
 scaleio03
 
 [pmdm]
 scaleio01
+
+[fs0]
+scaleio01
+scaleio04
+scaleio07
+
+[fs1]
+scaleio02
+scaleio05
+scaleio08
+
+[fs2]
+scaleio03
+scaleio06
+scaleio09
+
+[sds:children]
+fs0
+fs1
+fs2

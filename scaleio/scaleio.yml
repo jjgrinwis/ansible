@@ -8,8 +8,7 @@
   gather_facts: no
   tasks:
     - name: show vars
-      # debug: msg="Going to install ScaleIO {{ scaleio_version }}"
-      debug: var=scaleio_version
+      debug: msg="Going to install ScaleIO {{ scaleio_version }} with spare percentage of {{ percentage }}"
 
 # First start with our common play to install some needed software
 - name: deploy needed packages on all scaleio hosts
@@ -27,7 +26,7 @@
 - name: deploy SDS package on sds hosts
   hosts: sds
   sudo: yes
-  gather_facts: no
+  gather_facts: yes
 
   roles:
   - sds
@@ -66,3 +65,12 @@
 
   roles:
   - setup
+
+# install sdc package on sdc hosts
+- name: deploy SDC package on sdc hosts
+  hosts: sdc
+  sudo: yes
+  gather_facts: no
+
+  roles:
+  - sdc
