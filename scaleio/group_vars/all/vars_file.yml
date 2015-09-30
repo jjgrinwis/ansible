@@ -8,12 +8,13 @@ scaleio_storage_pool_name: "SP01"
 pdm: "{{ hostvars.scaleio01.ansible_eth0.ipv4.address }}"
 sdm: "{{ hostvars.scaleio02.ansible_eth0.ipv4.address }}"
 tb: "{{ hostvars.scaleio03.ansible_eth0.ipv4.address }}"
-sdc_ip: "{{ hostvars.scaleio10.ansible_eth0.ipv4.address }}"
 fs_size: 50
 vol_name: vol01
 fsn:
- - fs01
- - fs02
- - fs03
+ - faultset01
+ - faultset02
+ - faultset03
 # jinja2 magic, calculate spare node percentage. 1/length of sds group
-percentage: "{{ (1/(groups['sds'] | length)*100) | round | int }} "
+# spare node is based on number of fault set devices by sds nodes`
+#percentage: "{{ (1/(groups['sds'] | length)*100) | round | int }} "
+percentage: "{{ (1/(fsn | length)*100) | round | int }} "

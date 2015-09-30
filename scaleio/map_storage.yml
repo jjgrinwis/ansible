@@ -10,8 +10,12 @@
   hosts: sdc
   sudo: yes
   tasks:
-    - name: run drv_cfg to register to the mdm
-      debug: var=sdc_ip 
+    - name: run drv_cfg to register to the mdm, show ip we're using
+      debug: var={{ ansible_eth0.ipv4.address }}
+
+    # a little test with set_fact
+    - name: set fact
+      set_fact: sdc_ip={{ ansible_eth0.ipv4.address }}
 
     # register host with mdm hosts
     - name: run drv_cfg to register to the mdm
@@ -23,6 +27,11 @@
   tasks:
     - name: first login
       command: scli --login --mdm_ip {{ pdm }} --username admin --password {{ scaleio_password }}
+
+    # a little test with set_fact, a fact is unique per host so we have to look it u
+    # we can't set it in the play above as that's sdc_ip is available in other host, not the pmdm one.
+    - name: set sdc_ip/var from sdc client
+      set_fact: sdc_ip={{ hostvars[groups['sdc'][0]].ansible_eth0.ipv4.address }}
 
     - name: map volume to host
       command: scli --map_volume_to_sdc --volume_name {{ vol_name }} --sdc_ip {{ sdc_ip }}
@@ -44,3 +53,29 @@
 
     - name: mount /dev/scsia on /mnt
       mount: name=/mnt src=/dev/scinia1 fstype=ext3 state=mounted
+
+    - name: set 777 permissions
+      file: dest=/mnt state=directory mode=0777
+
+# now start bonnie, should be installed with sdc play
+- name: start some IO
+  hosts: sdc
+  sudo: yes
+  tasks:
+    - name: set memory
+      set_fact: mem=ansible_memtotal_mb
+      when: ansible_memtotal_mb is defined
+
+    - name: set memory if not defined
+      set_fact: mem=2048
+      when: ansible_memtotal_mb is not defined
+
+    - name: show mem
+      debug: var=mem
+
+    - name: start bonnie to generate some IOPS
+      command: bonnie++ -d /mnt -r {{ mem }} -u ansible
+      register: out
+
+    - name: show stdout
+      debug: var=out.stdout_lines

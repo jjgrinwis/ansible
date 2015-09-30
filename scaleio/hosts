@@ -1,11 +1,11 @@
 [scaleio]
-scaleio[01:10]
+scaleio[01:07]
 
 [mdm]
 scaleio[01:02]
 
 [sdc]
-scaleio10
+scaleio07
 
 [tb]
 scaleio03
@@ -16,17 +16,14 @@ scaleio01
 [fs0]
 scaleio01
 scaleio04
-scaleio07
 
 [fs1]
 scaleio02
 scaleio05
-scaleio08
 
 [fs2]
 scaleio03
 scaleio06
-scaleio09
 
 [sds:children]
 fs0
