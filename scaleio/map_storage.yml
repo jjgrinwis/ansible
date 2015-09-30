@@ -63,7 +63,7 @@
   sudo: yes
   tasks:
     - name: set memory
-      set_fact: mem=ansible_memtotal_mb
+      set_fact: mem={{ ansible_memtotal_mb }}
       when: ansible_memtotal_mb is defined
 
     - name: set memory if not defined
