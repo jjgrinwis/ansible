@@ -73,7 +73,7 @@
     - name: show mem
       debug: var=mem
 
-    - name: start bonnie to generate some IOPS
+    - name: start bonnie
       command: bonnie++ -d /mnt -r {{ mem }} -u ansible
       register: out
 
