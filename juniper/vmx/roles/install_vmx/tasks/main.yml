@@ -14,9 +14,9 @@
 # we need some unique mac so we're using index in list of vmx group
 # make sure not to exceed 9 hosts! item[0] used in templates
 - name: copy configuration file to vmxlite dir
-  #copy: src=files/vmx.conf dest=/home/vmx/vmxlite/config 
   template: src=templates/vmx.conf.j2 dest=/home/vmx/vmxlite/config/vmx.conf
-  with_indexed_items: groups.vmx
+
+- debug: var=mac
 
 - name: copy configuration file to vmxlite dir
   copy: src=files/vmx-junosdev.conf dest=/home/vmx/vmxlite/config 
