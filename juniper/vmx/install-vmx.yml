@@ -1,0 +1,72 @@
+---
+# Playbook to install a Juniper VMX
+# make sure your vm is version >= hw version 9 and hardware VT is enabled!
+
+# The list of packages that needs to be installed according to Juniper.
+# Some packages might already be installed but Ansible will ignore them ;-)
+- name: install Juniper VMX
+  hosts: vmx
+  gather_facts: no
+  sudo: yes
+  tasks:
+    - name: install needed modules
+      apt: name={{ item }} update_cache=False cache_valid_time=3600
+      with_items:
+        - bridge-utils 
+        - qemu-kvm 
+        - libvirt-bin 
+        - python 
+        - python-netifaces 
+        - vnc4server
+        - libyaml-dev 
+        - python-yaml 
+        - numactl 
+        - libparted0-dev 
+        - libpciaccess-dev
+        - libnuma-dev 
+        - libyajl-dev 
+        - libxml2-dev 
+        - libglib2.0-dev 
+        - libnl-dev 
+        - python-pip 
+        - python-dev 
+        - libxml2-dev 
+        - libxslt-dev
+
+# Now check if we need to install libvirt
+- name: check libvert versions
+  hosts: vmx
+  gather_facts: no
+  sudo: yes
+  tasks:
+    - shell: /usr/sbin/libvirtd --version
+      ignore_errors: True
+      register: libvirtd_version
+
+    - shell: /usr/bin/virsh --version
+      ignore_errors: True
+      register: virsh_version
+
+    - name: output version
+      debug: var=virsh_version
+
+    - name: output version
+      debug: var=libvirtd_version
+
+# now start install libvirt if necessary
+- name: start install when necessary
+  hosts: vmx
+  sudo: yes
+  vars:
+    libvirt: libvirt-1.2.8
+  roles:
+    - { role: install_libvirt, when: virsh_version.stdout.find("1.2.8") == -1 or libvirtd_version.stdout.find("1.2.8") == -1 }
+
+# if we have come this far, lets install vmx
+- name: install vmx
+  hosts: vmx
+  sudo: yes
+  vars:
+    vmx_version: vmx-14.1R5.4-1
+  roles:
+    - role: install_vmx

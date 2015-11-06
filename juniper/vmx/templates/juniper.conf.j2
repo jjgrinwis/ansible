@@ -1,0 +1,50 @@
+on 14.1R5.4;
+system {
+    host-name vmx01;
+    domain-name t-i.demo;
+    root-authentication {
+        encrypted-password "$1$ppnXnczA$/.zW7jrYNyRLKw9rF4wY10"; ## SECRET-DATA
+    }
+    name-server {
+        10.160.39.125;
+        10.160.39.126;
+    }
+    services {
+        ssh {
+            protocol-version v2;
+        }
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+        user * {
+            any emergency;
+        }                               
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    ntp {
+        server 10.160.39.125;
+        server 10.160.39.126;
+    }
+}
+interfaces {
+    fxp0 {
+        unit 0 {
+            family inet {
+                address 10.160.35.131/24;
+            }
+        }
+    }
+}
+routing-options {                       
+    static {
+        route 0.0.0.0/0 next-hop 10.160.35.1;
+    }
+}
