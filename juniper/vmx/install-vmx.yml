@@ -67,6 +67,7 @@
   hosts: vmx
   sudo: yes
   vars:
-    vmx_version: vmx-14.1R5.4-1
+    #vmx_version: vmx-14.1R5.4-1
+    vmx_version: vmx-15.1F3.11
   roles:
     - role: install_vmx
