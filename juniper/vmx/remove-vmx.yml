@@ -1,0 +1,25 @@
+---
+# Playbook to remove vmx again
+- name: remove bindings and vmx
+  hosts: vmx
+  gather_facts: no
+  sudo: yes
+  tasks:
+    - name: remove bindings
+      command: ./vmx.sh --unbind-dev
+      args:
+        chdir: "/home/vmx/vmxlite"
+
+    - name: cleanup vmx
+      command: ./vmx.sh --cleanup
+      args:
+        chdir: "/home/vmx/vmxlite"
+
+    - name: delete vmxlite dir
+      file: path=/home/vmx state=absent
+
+    - name: stop bridge
+      command: /sbin/ifconfig virbr0 down
+
+    - name: remove bridge
+      command: /sbin/brctl delbr virbr0

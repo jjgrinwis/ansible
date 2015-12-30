@@ -1,0 +1,41 @@
+---
+# task that will install the necessary libvirt version
+#
+#
+
+# first download libvir
+- name: download {{ libvirt }}
+  get_url:
+    url: 'http://libvirt.org/sources/{{ libvirt }}.tar.gz'
+    dest: '/tmp/libvirt.tar.gz'
+    force: no
+
+# unpack the downloaded libvirt
+- name: unpack {{ libvirt }}
+  unarchive: src=/tmp/libvirt.tar.gz dest=/tmp copy=no
+
+# now stop livirt service
+- name: stop libvirt service
+  service: name=libvirt-bin state=stopped
+
+# build libvirt, all necessary packages should already have been installed
+- name: configure libvirt
+  command: ./configure --prefix=/usr --localstatedir=/ --with-numactl
+  args:
+    chdir: '/tmp/{{ libvirt }}'
+
+# now compile libvirt
+- name: make libvirt
+  command: make
+  args:
+    chdir: '/tmp/{{ libvirt }}'
+
+# install libvirt
+- name: make install libvirt
+  command: make install
+  args:
+    chdir: '/tmp/{{ libvirt }}'
+
+# start libvirt service
+- name: start libvirt-bin service
+  service: name=libvirt-bin state=started

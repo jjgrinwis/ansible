@@ -1,0 +1,55 @@
+---
+# install vmx
+#
+- name: create directory to install the vmx
+  file: path=/home/vmx/ state=directory
+
+- name: unpack vmx.tgz
+  unarchive: src=files/{{ vmx_version }}.tgz dest=/home/vmx owner=root group=root
+  register: output
+
+- name: now link vmxlite to vmx
+  file: src=/home/vmx/{{ vmx_version }} dest=/home/vmx/vmxlite state=link
+
+# we need some unique mac so we're using index in list of vmx group
+# make sure not to exceed 9 hosts! item[0] used in templates
+- name: copy configuration file to vmxlite dir
+  template: src=templates/vmx.conf.j2 dest=/home/vmx/vmxlite/config/vmx.conf
+
+- debug: var=mac
+
+- name: copy configuration file to vmxlite dir
+  copy: src=files/vmx-junosdev.conf dest=/home/vmx/vmxlite/config 
+
+- name: cleanup old bridge info
+  command: ifconfig virbr0 down
+  ignore_errors: True
+
+- name: delete bridge
+  command: brctl delbr virbr0
+  ignore_errors: True
+
+# there where some issues with "file_ram_alloc: can't mmap RAM pages" 
+# we need to up PARAMS_num_hugepages_per_numa_node to 12288 according to a forum
+# so lets use replace Ansible module, 8192 is one value used in .env file so easy regexp
+- name: replace 8192 to 12288  for the numa hugepages
+  replace: dest=/home/vmx/vmxlite/env/ubuntu_virtio.env regexp=8192 replace=12288 backup=yes
+
+- name: now start installation of vmx
+  command: ./vmx.sh --install
+  args:
+    chdir: '/home/vmx/vmxlite/'
+
+- name: now bind interfaces
+  command: ./vmx.sh --bind-dev
+  args:
+    chdir: '/home/vmx/vmxlite/'
+
+- name: now check bindings
+  command: ./vmx.sh --bind-check
+  register: output
+  args:
+    chdir: '/home/vmx/vmxlite/'
+
+- name: show results
+  debug: var=output.stdout
