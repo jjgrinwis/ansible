@@ -1,0 +1,15 @@
+- name: Install and submit_vote.py
+  hosts: tag_Name_hans
+  sudo: yes
+  tasks:
+    - name: install python pip
+      apt: name=python-pip state=present update_cache=yes
+
+    - name: copy submit_vote.py
+      copy: src=files/submit_vote.py dest=/home/admin/submit_vote.py owner=admin mode=700
+
+    - name: install daemon package
+      apt: name=daemon state=present
+
+    - name: start submit_vote.py deamon
+      shell: daemon /home/admin/submit_vote.py

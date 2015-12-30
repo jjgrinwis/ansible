@@ -1,0 +1,61 @@
+- name: Create Debian instance on Amazon EC2
+  hosts: localhost
+  tasks:
+    - name: create ssh security zone
+      ec2_group:
+        name: ssh
+        description: allow ssh in
+        region: eu-west-1
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+
+    - name: allow outbound connections
+      ec2_group:
+        name: outbound
+        description: allow all outbound
+        region: eu-west-1
+        rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+
+    - name: start the instance
+      ec2:
+        image: ami-6a278219
+        region: eu-west-1
+        instance_type: t2.micro
+        key_name: mykey
+        group: [ssh, outbound]
+        wait: yes
+        instance_tags:
+          Name: hans
+          os: debian
+        exact_count: 2
+        count_tag: { Name: hans }
+      register: ec2
+
+    - name: Add new instance to group
+      add_host: hostname={{ item.public_ip }} groupname=launched
+      with_items: ec2.instances
+
+    - name: wait for SSH to come up
+      wait_for: host={{ item.public_dns_name }} port=22 delay=60 timeout=320 state=started
+      with_items: ec2.instances
+
+- name: Install and submit_vote.py
+  hosts: launched
+  sudo: yes
+  tasks:
+    - name: install python pip
+      apt: name=python-pip state=present update_cache=yes
+
+    - name: copy submit_vote.py
+      copy: src=files/submit_vote.py dest=/home/admin/submit_vote.py
+
+    - name: install daemon package
+      apt: name=daemon state=present
+
+    - name: start submit_vote.py deamon
+      shell: daemon /home/admin/submit_vote.py

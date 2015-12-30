@@ -1,0 +1,12 @@
+- name: search ami
+  hosts: localhost
+  tasks:
+    - name: search ami tasks
+      ec2_ami_find: 
+        name: "*jessie*"
+        virtualization_type: "hvm"
+        region: "eu-west-1"
+      register: ami_find
+
+    - name: print ami_find
+      debug: var=ami_find

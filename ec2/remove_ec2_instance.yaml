@@ -1,0 +1,12 @@
+# playbook will terminate all instances with tag Name=hans
+# we're using dynamic inventory script inventory/ec2.py
+# inventory script will creat groups and host info
+- name: terminate ec2
+  hosts: localhost
+  tasks:
+    - name: kill ami
+      ec2:
+         state: absent
+         region: eu-west-1
+         instance_ids: "{{ hostvars[item].ec2_id }}"
+      with_items: groups['tag_Name_hans']

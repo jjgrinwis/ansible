@@ -1,0 +1,13 @@
+- name: create a new keypair
+  hosts: localhost
+  tasks:
+    - name: create mykey
+      ec2_key: name=mykey region=eu-west-1
+      register: keypair
+
+    - name: write the key to a file
+      copy: 
+        dest: files/mykey.pem 
+        content: "{{ keypair.key.private_key }}" 
+        mode: 0600
+      when: keypair.changed

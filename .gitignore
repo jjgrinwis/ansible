@@ -1,0 +1,5 @@
+*.pem
+*.zip
+*.gz
+*.rpm
+set_env
